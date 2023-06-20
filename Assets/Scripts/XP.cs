@@ -16,6 +16,7 @@ public class XP : MonoBehaviour
         xpControll.level += 1;
         xpControll.needxp += 3;
       }
+      Debug.LogFormat("{0}, {1}, {2}", xpControll.xp, xpControll.needxp, xpControll.level);
     }
   }
 }
