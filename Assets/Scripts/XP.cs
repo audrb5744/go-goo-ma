@@ -11,6 +11,11 @@ public class XP : MonoBehaviour
       Destroy(gameObject);
       XPControll xpControll = GameObject.Find("XPControll").GetComponent<XPControll>();
       xpControll.xp += getXP;
+      if(xpControll.xp >= xpControll.needxp){
+        xpControll.xp -= xpControll.needxp;
+        xpControll.level += 1;
+        xpControll.needxp += 3;
+      }
     }
   }
 }
