@@ -8,7 +8,7 @@ public class XPControll : MonoBehaviour
   public float xp = 0f;
   public float needxp = 3f;
   public int level = 1;
-  public Slider xpSlider;
+  private Slider xpSlider;
 
 
 void Update()
