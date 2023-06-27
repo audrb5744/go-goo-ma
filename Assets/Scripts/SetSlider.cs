@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SetSlider : MonoBehaviour
 {
+  [SerializeField]
   public Slider xpSlider;
   XPControll xpControll = GameObject.Find("XPControll").GetComponent<XPControll>();
 
@@ -15,7 +16,7 @@ public class SetSlider : MonoBehaviour
 
   void Update()
   {
-    OnSliderValueChanged(xpControll.xp);
+    OnSliderValueChanged(0f);
   }
 
   void OnSliderValueChanged(float value)
