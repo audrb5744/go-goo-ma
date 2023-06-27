@@ -5,19 +5,18 @@ using UnityEngine.UI;
 
 public class SetSlider : MonoBehaviour
 {
-  [SerializeField]
   public Slider xpSlider;
-  XPControll xpControll = GameObject.Find("XPControll").GetComponent<XPControll>();
 
-  void Start()
-  {
-    OnSliderValueChanged(0f);
+  private void Start() {
+    xpSlider = GetComponent<Slider>(); 
   }
-
   void Update()
-  {
-    OnSliderValueChanged(0f);
-  }
+    {
+      XPControll xpControll = GameObject.Find("XPControll").GetComponent<XPControll>();
+      xpSlider.value = xpControll.xp;
+      xpSlider.maxValue = xpControll.needxp;
+      xpSlider.value = Mathf.Clamp(xpSlider.value, xpSlider.minValue, xpSlider.maxValue);
+    }
 
   void OnSliderValueChanged(float value)
   {
