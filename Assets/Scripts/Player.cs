@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private float moveSpeed;
+    //[SerializeField]
+    //private float moveSpeed;
 
     [SerializeField]
-    private GameObject wapon;
+    private GameObject shotObject;
 
-    [SerializeField]
-    private Transform shotLoc;
+    // [SerializeField]
+    // private Transform shotLoc;
 
     [SerializeField]
     private float attackSpeed = 0.05f;
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     void shot(){
       if(Time.time - lastAttack > attackSpeed){
-        Instantiate(wapon, shotLoc.position, Quaternion.identity);
+        Instantiate(shotObject, transform.position, Quaternion.identity);
         lastAttack = Time.time;
       }
     }
