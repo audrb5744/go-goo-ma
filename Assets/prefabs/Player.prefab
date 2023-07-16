@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotObject: {fileID: 6090420827865665580, guid: 59722daab0e24f34dafec34b63e2d369, type: 3}
+  HP: 3
   attackSpeed: 1
 --- !u!114 &9038402775638893815
 MonoBehaviour:
@@ -115,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotObject: {fileID: 0}
+  HP: 0
   attackSpeed: 0.05
 --- !u!50 &9038402775638893814
 Rigidbody2D:

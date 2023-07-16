@@ -6,6 +6,13 @@ public class XP : MonoBehaviour
 {
   private float getXP = 1f;
 
+  void Update()
+    {
+      if(transform.position.y < -7){
+        Destroy(gameObject);
+      }
+    }
+
   private void OnTriggerEnter2D(Collider2D other) {
     if(other.gameObject.name == "Player"){
       Destroy(gameObject);

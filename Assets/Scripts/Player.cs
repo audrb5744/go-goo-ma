@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject shotObject;
 
+    [SerializeField]
+    private int HP;
+
     // [SerializeField]
     // private Transform shotLoc;
 
@@ -42,6 +45,17 @@ public class Player : MonoBehaviour
       if(Time.time - lastAttack > attackSpeed){
         Instantiate(shotObject, transform.position, Quaternion.identity);
         lastAttack = Time.time;
+      }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+      if(other.gameObject.tag == "Enemy"){
+        if(HP >= 0){
+          Destroy(other.gameObject);
+          HP -= 1;
+          if(HP < 1)
+            Destroy(gameObject);
+        }
       }
     }
 
