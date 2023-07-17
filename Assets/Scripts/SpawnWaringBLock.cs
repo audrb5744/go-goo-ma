@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpawnWaringBLock : MonoBehaviour
 {
-    [SerializeField]
-    private int speed;
 
     [SerializeField]
     private GameObject block;
@@ -20,7 +18,7 @@ public class SpawnWaringBLock : MonoBehaviour
         StartCoroutine("spawnWaringBlockCoroutine");
     }
 
-    IEnumerator spawnWaringBlockCoroutine()
+    public IEnumerator spawnWaringBlockCoroutine()
     {
         yield return new WaitForSeconds(1f);
         while (true){
@@ -31,13 +29,4 @@ public class SpawnWaringBLock : MonoBehaviour
         
     }
 
-    void Update()
-    {
-        transform.position += Vector3.down * speed * Time.deltaTime;
-        transform.rotation *= Quaternion.Euler(0f, 0f, 180f * Time.deltaTime);
-        if (transform.position.y < -7)
-        {
-            Destroy(gameObject);
-        }
-    }
 }

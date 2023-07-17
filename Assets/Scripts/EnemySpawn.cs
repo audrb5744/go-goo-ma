@@ -11,7 +11,7 @@ public class EnemySpawn : MonoBehaviour
   private float spawnInterval = 2f;
 
 
-    void Start()
+    public void Start()
     {
      startEnemyRoutine(); 
     }
@@ -20,7 +20,7 @@ public class EnemySpawn : MonoBehaviour
       StartCoroutine("EnemyRoutine");
     }
 
-    IEnumerator EnemyRoutine(){
+    public IEnumerator EnemyRoutine(){
       yield return new WaitForSeconds(1f);
       float enemySpeed = 5f;
       int spawnCount = 0;

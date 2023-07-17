@@ -10,8 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject shotObject;
 
-    [SerializeField]
-    private int HP;
+    public static int HP = 3;
 
     public static float loc_x;
 
@@ -58,6 +57,8 @@ public class Player : MonoBehaviour
           HP -= 1;
           if(HP < 1)
             Destroy(gameObject);
+            //StopCoroutine("EnemyRoutine");
+            //StopCoroutine("spawnWaringBlockCoroutine");
         }
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         if(HP == 2){
