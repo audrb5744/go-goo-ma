@@ -19,6 +19,7 @@ public class Restart : MonoBehaviour
                 Player.attackSpeed = 0.5f;
                 Enemy.kills = 0;
                 Enemy.enemyMaxHP = 1;
+                Player.HP = 3;
             }
 
 
