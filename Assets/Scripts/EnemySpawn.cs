@@ -22,17 +22,17 @@ public class EnemySpawn : MonoBehaviour
 
     IEnumerator EnemyRoutine(){
       yield return new WaitForSeconds(1f);
-      float speed = 5f;
+      float enemySpeed = 5f;
       int spawnCount = 0;
       int enemyLevel = 0;
-      int spawnCountTargetValue = 1;
+      float spawnCountTargetValue = 2f;
       int disposableSpawnCount = 3;
-      float HP = 1;
+      int enemyHP = 1;
       while(true){
         disposableSpawnCount = 3;
         foreach (float posX in arrPosX) {
           if(Random.value >= 0.6 && disposableSpawnCount >= 0){
-            SpawnEnemy(posX, speed, HP); 
+            SpawnEnemy(posX, enemySpeed, enemyHP); 
             spawnCount ++;
             disposableSpawnCount --;
           }
@@ -40,25 +40,23 @@ public class EnemySpawn : MonoBehaviour
         yield return new WaitForSeconds(spawnInterval);
         
         if (spawnCount >= spawnCountTargetValue){
-          spawnCountTargetValue *= 2;
+          spawnCountTargetValue *= 2.5f;
           enemyLevel ++;
-          speed += 0.5f;
+          enemySpeed += 0.5f;
           if(spawnInterval >= 1){
             spawnInterval -= 0.2f;
           } else if(spawnInterval > 0.1f){
             spawnInterval -= 0.1f;
           }
-          HP ++;
-          Debug.LogFormat("speed = {0} / spawnInterval = {1}",speed,spawnInterval);
+            Enemy.enemyMAXHP += 1;
+            Enemy.enemySpeed += 0.5f;
         }
       }
     }
-    void SpawnEnemy(float posX, float speed, float HP){
+    void SpawnEnemy(float posX, float speed, int HP){
       Vector3 spawnPos = new Vector3(posX, transform.position.y, transform.position.z);
       GameObject enemyObject = Instantiate(this.enemy, spawnPos, Quaternion.identity);
-      Enemy enemy = enemyObject.GetComponent<Enemy>();
-      enemy.setSpeed(speed);
-      enemy.setHP(HP);
+      Enemy.enemyHP = Enemy.enemyMAXHP; 
 
 
     }

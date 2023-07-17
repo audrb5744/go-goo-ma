@@ -16,19 +16,15 @@ public class XP : MonoBehaviour
   private void OnTriggerEnter2D(Collider2D other) {
     if(other.gameObject.name == "Player"){
       Destroy(gameObject);
-      XPControll xpControll = GameObject.Find("XPControll").GetComponent<XPControll>();
-      Player player = GameObject.Find("Player").GetComponent<Player>();
-      Attack attack = GameObject.Find("Attack").GetComponent<Attack>();
-      xpControll.xp += getXP;
-      if(xpControll.xp >= xpControll.needxp){
-        xpControll.xp -= xpControll.needxp;
-        xpControll.level += 1;
-        xpControll.needxp += 3;
-        player.setAttackSpeed(player.attackSpeed - 0.05f);
-        attack.setDamage(attack.damage + 1);
+      XPControll.xp += getXP;
+      if(XPControll.xp >= XPControll.needxp){
+        XPControll.xp -= XPControll.needxp;
+        XPControll.level += 1;
+        XPControll.needxp += 3;
+        Player.attackSpeed -= 0.05f;
+        Attack.damage += 1;
 
       }
-      Debug.LogFormat("{0}, {1}, {2}", xpControll.xp, xpControll.needxp, xpControll.level);
     }
   }
 }

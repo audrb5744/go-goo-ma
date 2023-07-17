@@ -14,6 +14,6 @@ public class SetLevelTxt : MonoBehaviour
   void Update()
     {
       XPControll xpControll = GameObject.Find("XPControll").GetComponent<XPControll>();
-      levelTxt.text = xpControll.level.ToString();
+      levelTxt.text = XPControll.level.ToString();
     }
 }

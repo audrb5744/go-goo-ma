@@ -8,23 +8,15 @@ public class Enemy : MonoBehaviour
   private GameObject xpObject;
 
   [SerializeField]
-  private float speed;
+  public static float enemySpeed = 15;
 
-  private float HP = 1f;
-
-  public void setSpeed(float speed){
-    this.speed = speed;
-  }
-
-  public void setHP(float HP)
-  {
-      this.HP = speed;
-  }
+  public static int enemyHP = 1;
+  public static int enemyMAXHP = 1;
 
   // Update is called once per frame
   void Update()
   {
-      transform.position += Vector3.down * speed * Time.deltaTime;
+      transform.position += Vector3.down * enemySpeed * Time.deltaTime;
       if(transform.position.y < -7){
         Destroy(gameObject);
       }
@@ -32,10 +24,16 @@ public class Enemy : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D other) {
     if(other.gameObject.tag == "AttackObject"){
-      Attack attack = other.gameObject.GetComponent<Attack>();
       if(gameObject.transform.position.y < 5.35){
-        HP -= attack.damage; 
-        if(HP <= 0){
+        enemyHP -= Attack.damage;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (0.5 >= enemyHP / enemyMAXHP){
+          spriteRenderer.color = new Color(1f, 0.65f, 0f);
+        }
+        else if (enemyHP == 1){
+          spriteRenderer.color = new Color(255f, 0f, 0f);
+        }
+        if(enemyHP <= 0){
           Destroy(gameObject);
           Instantiate(xpObject, gameObject.transform.position, Quaternion.Euler(new Vector3(0,0,90)));
         }

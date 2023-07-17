@@ -16,14 +16,9 @@ public class Player : MonoBehaviour
     // [SerializeField]
     // private Transform shotLoc;
 
-    [SerializeField]
-    public float attackSpeed = 0.05f;
-    
-    private float lastAttack = 0f;
+    public static float attackSpeed = 0.5f;
 
-    public void setAttackSpeed(float attackSpeed){
-      this.attackSpeed = attackSpeed;
-    }
+    private float lastAttack = 0f;
 
     void Update()
     {
@@ -61,6 +56,12 @@ public class Player : MonoBehaviour
           HP -= 1;
           if(HP < 1)
             Destroy(gameObject);
+        }
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if(HP == 2){
+          spriteRenderer.color = new Color(1f, 0.65f, 0f);
+        } else if(HP == 1){
+          spriteRenderer.color = new Color(255f, 0f, 0f);
         }
       }
     }
