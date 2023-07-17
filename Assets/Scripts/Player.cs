@@ -17,8 +17,14 @@ public class Player : MonoBehaviour
     // private Transform shotLoc;
 
     [SerializeField]
-    private float attackSpeed = 0.05f;
+    public float attackSpeed = 0.05f;
+    
     private float lastAttack = 0f;
+
+    public void setAttackSpeed(float attackSpeed){
+      this.attackSpeed = attackSpeed;
+    }
+
     void Update()
     {
         // float horizontalInput = Input.GetAxisRaw("Horizontal");

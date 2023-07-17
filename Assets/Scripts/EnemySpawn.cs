@@ -27,11 +27,12 @@ public class EnemySpawn : MonoBehaviour
       int enemyLevel = 0;
       int spawnCountTargetValue = 1;
       int disposableSpawnCount = 3;
+      float HP = 1;
       while(true){
         disposableSpawnCount = 3;
         foreach (float posX in arrPosX) {
-          if(Random.value >= 0.5 && disposableSpawnCount >= 0){
-            SpawnEnemy(posX, speed); 
+          if(Random.value >= 0.6 && disposableSpawnCount >= 0){
+            SpawnEnemy(posX, speed, HP); 
             spawnCount ++;
             disposableSpawnCount --;
           }
@@ -47,15 +48,17 @@ public class EnemySpawn : MonoBehaviour
           } else if(spawnInterval > 0.1f){
             spawnInterval -= 0.1f;
           }
+          HP ++;
           Debug.LogFormat("speed = {0} / spawnInterval = {1}",speed,spawnInterval);
         }
       }
     }
-    void SpawnEnemy(float posX, float speed){
+    void SpawnEnemy(float posX, float speed, float HP){
       Vector3 spawnPos = new Vector3(posX, transform.position.y, transform.position.z);
       GameObject enemyObject = Instantiate(this.enemy, spawnPos, Quaternion.identity);
       Enemy enemy = enemyObject.GetComponent<Enemy>();
       enemy.setSpeed(speed);
+      enemy.setHP(HP);
 
 
     }
