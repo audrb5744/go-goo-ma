@@ -38,7 +38,7 @@ public class EnemySpawn : MonoBehaviour
         
         if(spawnAllLine > 0){
             foreach (float posX in arrPosX){
-                SpawnEnemy(posX, enemySpeed, Enemy.enemyMaxHP * 2);
+                SpawnEnemy(posX, enemySpeed, Enemy.enemyMaxHP * 5);
                 spawnCount++;
                 CountingSpawn ++;
             }
