@@ -57,6 +57,7 @@ public class EnemySpawn : MonoBehaviour
         
         if (spawnCount >= spawnCountTargetValue){
           spawnCountTargetValue *= 2.5f;
+          WaringBlock.speed += 1;
           enemySpeed += 0.5f;
           enemyLevel += 1;
           if(spawnInterval >= 1){

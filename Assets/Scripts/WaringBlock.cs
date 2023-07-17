@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class WaringBlock : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
+    public static float speed = 5f;
 
     void Update()
     {
