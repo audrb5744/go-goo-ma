@@ -6,14 +6,13 @@ using TMPro;
 
 public class SetLevelTxt : MonoBehaviour
 {
-  public TMP_Text levelTxt;
+  public TMP_Text Level;
 
   private void Start() {
-    levelTxt = GetComponent<TMP_Text>(); 
+    Level = GetComponent<TMP_Text>(); 
   }
   void Update()
     {
-      XPControll xpControll = GameObject.Find("XPControll").GetComponent<XPControll>();
-      levelTxt.text = XPControll.level.ToString();
+      Level.text = XPControll.level.ToString();
     }
 }

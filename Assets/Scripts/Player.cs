@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int HP;
 
+    public static float loc_x;
+
     // [SerializeField]
     // private Transform shotLoc;
 
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour
         // } else if (Input.GetKey(KeyCode.RightArrow)) {
         //   transform.position += moveTo;
         // }
-
+        loc_x = transform.position.x;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float toX = Mathf.Clamp(mousePos.x,-2.5f,2.5f);
         float toY = Mathf.Clamp(mousePos.y,-4.65f,4.65f);

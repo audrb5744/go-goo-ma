@@ -24,31 +24,49 @@ public class EnemySpawn : MonoBehaviour
       yield return new WaitForSeconds(1f);
       float enemySpeed = 5f;
       int spawnCount = 0;
-      int enemyLevel = 0;
       float spawnCountTargetValue = 2f;
       int disposableSpawnCount = 3;
-      int enemyHP = 1;
+      int enemyLevel = 1;
+      int spawnAllLine = 0;
+      int CountingSpawn = 0;
       while(true){
         disposableSpawnCount = 3;
-        foreach (float posX in arrPosX) {
-          if(Random.value >= 0.6 && disposableSpawnCount >= 0){
-            SpawnEnemy(posX, enemySpeed, enemyHP); 
-            spawnCount ++;
-            disposableSpawnCount --;
+        if(CountingSpawn >= 100){
+          CountingSpawn -= 100;
+          spawnAllLine += 1;
+        }
+        
+        if(spawnAllLine > 0){
+            foreach (float posX in arrPosX){
+                SpawnEnemy(posX, enemySpeed, Enemy.enemyMaxHP * 2);
+                spawnCount++;
+                CountingSpawn ++;
+            }
+            spawnAllLine--;
+        } else {
+            foreach (float posX in arrPosX) {
+              if(Random.value >= 0.6 && disposableSpawnCount >= 0){
+                SpawnEnemy(posX, enemySpeed, Enemy.enemyMaxHP); 
+                spawnCount ++;
+                CountingSpawn ++;
+                disposableSpawnCount --;
+              }
           }
         }
         yield return new WaitForSeconds(spawnInterval);
         
         if (spawnCount >= spawnCountTargetValue){
           spawnCountTargetValue *= 2.5f;
-          enemyLevel ++;
           enemySpeed += 0.5f;
+          enemyLevel += 1;
           if(spawnInterval >= 1){
             spawnInterval -= 0.2f;
           } else if(spawnInterval > 0.1f){
             spawnInterval -= 0.1f;
           }
-            Enemy.enemyMAXHP += 1;
+            if(enemyLevel > 2){
+              Enemy.enemyMaxHP += 1;
+            }
             Enemy.enemySpeed += 0.5f;
         }
       }
@@ -56,7 +74,7 @@ public class EnemySpawn : MonoBehaviour
     void SpawnEnemy(float posX, float speed, int HP){
       Vector3 spawnPos = new Vector3(posX, transform.position.y, transform.position.z);
       GameObject enemyObject = Instantiate(this.enemy, spawnPos, Quaternion.identity);
-      Enemy.enemyHP = Enemy.enemyMAXHP; 
+      Enemy.enemyHP = HP;
 
 
     }
